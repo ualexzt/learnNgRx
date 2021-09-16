@@ -1,17 +1,30 @@
 <section
   class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800"
 >
-  <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white text-center">
+  <h2
+    class="
+      text-lg
+      font-semibold
+      text-gray-700
+      capitalize
+      dark:text-white
+      text-center
+    "
+  >
     Account settings
   </h2>
+  <p>
+    <a [routerLink]="['login']">Have an account? </a>
+  </p>
 
-  <form>
+  <form [formGroup]="form" (ngSubmit)="submitSingin()">
     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
       <div>
         <label class="text-gray-700 dark:text-gray-200" for="username"
           >Username</label
         >
         <input
+          formControlName="username"
           id="username"
           type="text"
           class="
@@ -37,6 +50,7 @@
           >Email Address</label
         >
         <input
+          formControlName="email"
           id="emailAddress"
           type="email"
           class="
@@ -62,6 +76,7 @@
           >Password</label
         >
         <input
+          formControlName="password"
           id="password"
           type="password"
           class="
@@ -89,6 +104,7 @@
           >Password Confirmation</label
         >
         <input
+          formControlName="confirm"
           id="passwordConfirmation"
           type="password"
           class="
