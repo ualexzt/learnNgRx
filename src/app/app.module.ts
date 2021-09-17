@@ -8,6 +8,8 @@ import {environment} from 'src/environments/environment'
 import {AppRoutingModule} from './app.routing'
 import {AppComponent} from './app.component'
 import {AuthModule} from './auth/auth.module'
+import {HttpClientModule} from '@angular/common/http'
+import {EffectsModule} from '@ngrx/effects'
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,11 +18,13 @@ import {AuthModule} from './auth/auth.module'
     AppRoutingModule,
     AuthModule,
     ReactiveFormsModule,
+    EffectsModule.forRoot([]),
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

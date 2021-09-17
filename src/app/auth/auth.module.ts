@@ -6,6 +6,9 @@ import {RegisterComponent} from './register/register.component'
 import {ReactiveFormsModule} from '@angular/forms'
 import {StoreModule} from '@ngrx/store'
 import {reduser} from './store/reduser'
+import {AuthService} from './services/auth.service'
+import {EffectsModule} from '@ngrx/effects'
+import {RegisterEffect} from './store/effects/register.effect'
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -14,6 +17,8 @@ import {reduser} from './store/reduser'
     AuthRoutingModule,
     ReactiveFormsModule,
     StoreModule.forFeature('auth', reduser),
+    EffectsModule.forFeature([RegisterEffect]),
   ],
+  providers: [AuthService],
 })
 export class AuthModule {}

@@ -13,7 +13,7 @@
   >
     SingUp
   </h2>
- 
+
   <p>
     <a [routerLink]="['login']">Have an account? </a>
   </p>
@@ -128,6 +128,7 @@
 
     <div class="flex justify-end mt-6">
       <button
+        [disabled]="isSubmitting$ | async"
         class="
           px-6
           py-2
