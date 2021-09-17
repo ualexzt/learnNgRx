@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
-import { Store } from '@ngrx/store'
-import { registerAction } from '../store/actions/register.action'
+import {Store} from '@ngrx/store'
+import {registerAction} from '../store/actions/register.action'
 
 @Component({
   selector: 'app-register',
@@ -19,14 +19,9 @@ export class RegisterComponent implements OnInit {
       username: ['', Validators.required],
       email: ['', Validators.email],
       password: '',
-      confirm: '',
     })
   }
   submitSingin(): void {
-    if (this.form.value.password !== this.form.value.confirm || !this.form.valid) {
-      console.log('Form incorrect')
-    } else {
-      this.store.dispatch(registerAction(this.form.value))
-    }
+    this.store.dispatch(registerAction(this.form.value))
   }
 }
