@@ -10,6 +10,7 @@ import {AuthService} from './services/auth.service'
 import {EffectsModule} from '@ngrx/effects'
 import {RegisterEffect} from './store/effects/register.effect'
 import {SharedModule} from '../shared/shared.module'
+import {PersistanceService} from '../shared/services/persistance.service'
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -21,6 +22,6 @@ import {SharedModule} from '../shared/shared.module'
     StoreModule.forFeature('auth', reduser),
     EffectsModule.forFeature([RegisterEffect]),
   ],
-  providers: [AuthService],
+  providers: [AuthService, PersistanceService],
 })
 export class AuthModule {}
