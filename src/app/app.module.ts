@@ -10,6 +10,7 @@ import {AppComponent} from './app.component'
 import {AuthModule} from './auth/auth.module'
 import {HttpClientModule} from '@angular/common/http'
 import {EffectsModule} from '@ngrx/effects'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import {EffectsModule} from '@ngrx/effects'
       logOnly: environment.production,
     }),
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

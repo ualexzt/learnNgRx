@@ -1,0 +1,9 @@
+<div class="flex flex-row justify-items-start">
+  <ul>
+    <li class="text-red-500" *ngFor="let error of errorMessages">
+      <div class="flex flex-row items-center">
+        <mat-icon>error</mat-icon> {{ error }}
+      </div>
+    </li>
+  </ul>
+</div>
