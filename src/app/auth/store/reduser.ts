@@ -1,5 +1,11 @@
 import {Action, createReducer, on} from '@ngrx/store'
+import {Action} from 'rxjs/internal/scheduler/Action'
 import {AuthStateInterface} from '../types/authState.interface'
+import {
+  loginAction,
+  loginFailuerAction,
+  loginSuccessAction,
+} from './actions/login.action'
 import {
   registerAction,
   registerFailuerAction,
@@ -35,6 +41,32 @@ const authReduser = createReducer(
   ),
   on(
     registerFailuerAction,
+    (state, action): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+      validatonErrors: action.errors,
+    })
+  ),
+  on(
+    loginAction,
+    (state): AuthStateInterface => ({
+      ...state,
+      isSubmitting: true,
+      validatonErrors: null,
+    })
+  ),
+  on(
+    loginSuccessAction,
+    (state, action): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+      isLoggetIn: true,
+      validatonErrors: null,
+      currentUser: action.user,
+    })
+  ),
+  on(
+    loginFailuerAction,
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,

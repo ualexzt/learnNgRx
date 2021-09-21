@@ -7,14 +7,10 @@ import {catchError, map, switchMap, tap} from 'rxjs/operators'
 import {PersistanceService} from 'src/app/shared/services/persistance.service'
 import {UserInterface} from 'src/app/shared/types/user.interface'
 import {AuthService} from '../../services/auth.service'
-import {
-  registerAction,
-  registerFailuerAction,
-  registerSuccessAction,
-} from '../actions/register.action'
+import {loginAction, loginFailuerAction, loginSuccessAction} from '../actions/login.action'
 
 @Injectable()
-export class RegisterEffect {
+export class LoginEffect {
   constructor(
     private actions$: Actions,
     private _authService: AuthService,
@@ -24,16 +20,16 @@ export class RegisterEffect {
 
   register$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(registerAction),
+      ofType(loginAction),
       switchMap(({request}) => {
-        return this._authService.register(request).pipe(
+        return this._authService.login(request).pipe(
           map((user: UserInterface) => {
             this._persistanceService.set('accessToken', user.token)
-            return registerSuccessAction({user})
+            return loginSuccessAction({user})
           }),
           catchError((errorResponse: HttpErrorResponse) => {
             return of(
-              registerFailuerAction({errors: errorResponse.error.errors})
+              loginFailuerAction({errors: errorResponse.error.errors})
             )
           })
         )
@@ -44,7 +40,7 @@ export class RegisterEffect {
   redirectAfterRegister$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(registerSuccessAction),
+        ofType(loginSuccessAction),
         tap(() => {
           this._router.navigateByUrl('/')
         })
