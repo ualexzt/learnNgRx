@@ -11,10 +11,11 @@ import {EffectsModule} from '@ngrx/effects'
 import {RegisterEffect} from './store/effects/register.effect'
 import {SharedModule} from '../shared/shared.module'
 import {PersistanceService} from '../shared/services/persistance.service'
-import {LoginEffect} from './store/effects/login.effect'
+import {LoginEffect} from './store/effects/login.effect';
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [RegisterComponent, LoginComponent],
   imports: [
     CommonModule,
     SharedModule,

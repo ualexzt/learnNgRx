@@ -1,5 +1,4 @@
 import {Action, createReducer, on} from '@ngrx/store'
-import {Action} from 'rxjs/internal/scheduler/Action'
 import {AuthStateInterface} from '../types/authState.interface'
 import {
   loginAction,

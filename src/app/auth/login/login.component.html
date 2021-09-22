@@ -15,8 +15,8 @@
   </h2>
   <div class="flex flex-row justify-center">
     <p>
-      <a class="text-green-500 font-semibold" [routerLink]="['', 'login']"
-        >Have an account?
+      <a class="text-green-500 font-semibold" [routerLink]="['', 'register']"
+        >Don`t have an account?
       </a>
     </p>
   </div>
@@ -27,32 +27,6 @@
 
   <form [formGroup]="form" (ngSubmit)="submitSingin()">
     <div class="grid grid-cols-1 gap-6 mt-4">
-      <div>
-        <label class="text-gray-700 dark:text-gray-200" for="username"
-          >Username</label
-        >
-        <input
-          formControlName="username"
-          id="username"
-          type="text"
-          class="
-            block
-            w-full
-            px-4
-            py-2
-            mt-2
-            text-gray-700
-            bg-white
-            border border-gray-300
-            rounded-md
-            dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600
-            focus:border-blue-500
-            dark:focus:border-blue-500
-            focus:outline-none focus:ring
-          "
-        />
-      </div>
-
       <div>
         <label class="text-gray-700 dark:text-gray-200" for="emailAddress"
           >Email Address</label
