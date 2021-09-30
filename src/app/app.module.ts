@@ -11,6 +11,7 @@ import {AuthModule} from './auth/auth.module'
 import {HttpClientModule} from '@angular/common/http'
 import {EffectsModule} from '@ngrx/effects'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {TopBarModule} from './shared/modules/top-bar/top-bar.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     }),
     HttpClientModule,
     BrowserAnimationsModule,
+    TopBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
