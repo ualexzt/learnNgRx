@@ -8,10 +8,12 @@ import {environment} from 'src/environments/environment'
 import {AppRoutingModule} from './app.routing'
 import {AppComponent} from './app.component'
 import {AuthModule} from './auth/auth.module'
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import {EffectsModule} from '@ngrx/effects'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {TopBarModule} from './shared/modules/top-bar/top-bar.module'
+import {PersistanceService} from './shared/services/persistance.service'
+import {AuthInterceptor} from './shared/services/authintercepter.service'
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +32,14 @@ import {TopBarModule} from './shared/modules/top-bar/top-bar.module'
     BrowserAnimationsModule,
     TopBarModule,
   ],
-  providers: [],
+  providers: [
+    PersistanceService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
