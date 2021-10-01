@@ -11,8 +11,9 @@ import {EffectsModule} from '@ngrx/effects'
 import {RegisterEffect} from './store/effects/register.effect'
 import {SharedModule} from '../shared/shared.module'
 import {PersistanceService} from '../shared/services/persistance.service'
-import {LoginEffect} from './store/effects/login.effect';
-import { LoginComponent } from './login/login.component'
+import {LoginEffect} from './store/effects/login.effect'
+import {LoginComponent} from './login/login.component'
+import {GetCurrentUserEffect} from './store/effects/getCurrentUser.effect'
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent],
@@ -22,7 +23,11 @@ import { LoginComponent } from './login/login.component'
     AuthRoutingModule,
     ReactiveFormsModule,
     StoreModule.forFeature('auth', reduser),
-    EffectsModule.forFeature([RegisterEffect, LoginEffect]),
+    EffectsModule.forFeature([
+      RegisterEffect,
+      LoginEffect,
+      GetCurrentUserEffect,
+    ]),
   ],
   providers: [AuthService, PersistanceService],
 })
